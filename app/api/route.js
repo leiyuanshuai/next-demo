@@ -1,5 +1,6 @@
 // app/api/route.js
 import { cookies, headers } from 'next/headers'
+// NextResponse是继承了原生的Response 同理NextRequest也是继承了原生的Request https://developer.mozilla.org/zh-CN/docs/Web/API/Response/Response
 import { NextResponse, NextRequest } from 'next/server'
 import {redirect} from 'next/navigation'
 // 处理cookie
