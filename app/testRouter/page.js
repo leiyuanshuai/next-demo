@@ -1,25 +1,36 @@
-"use client";
-import { usePathname, useSearchParams, useParams, useRouter } from 'next/navigation'
-import {useState, useEffect} from 'react'
-export default function Page() {
-const pathname = usePathname()
-const searchParams = useSearchParams();
-const [query, setQuery] = useState({});
-console.log()
-useEffect(() => {
-  console.log('searchParams', typeof searchParams)
-  const params = {};
-  for (const [key, value] of searchParams.entries()) {
-    params[key] = value;
-  }
-  setQuery(params);
-}, [searchParams]);
+// pages/testRouter.js
 
-if (!query) {
-  return <div>Loading...</div>;
-}
-  return <div>
-    <h2>路径:{pathname}</h2>
-    <h2>query:{JSON.stringify(query, null, 2)}</h2>
-  </div>
-}
+"use client"; // 声明为客户端组件
+
+import { useSearchParams } from 'next/navigation';
+import { Suspense } from 'react';
+
+const TestRouterComponent = () => {
+  const searchParams = useSearchParams();
+  const [query, setQuery] = useState({});
+
+  useEffect(() => {
+    const params = {};
+    for (const [key, value] of searchParams.entries()) {
+      params[key] = value;
+    }
+    setQuery(params);
+  }, [searchParams]);
+
+  return (
+    <div>
+      <h2>Query Parameters: {JSON.stringify(query, null, 2)}</h2>
+    </div>
+  );
+};
+
+const TestRouterPage = () => {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <TestRouterComponent />
+    </Suspense>
+  );
+};
+
+export default TestRouterPage;
+
