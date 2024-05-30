@@ -10,9 +10,9 @@ function Loading() {
 
 const sleep = ms => new Promise(r => setTimeout(r, ms));
 
-async function CustomComponent() {
+async function CustomComponent({children}) {
   await sleep(1000)
-  return <div className="h-10 mt-5 mb-2 flex-1 rounded-xl bg-indigo-500 text-white flex items-center justify-center">Hello, Template!</div>
+  return <div className="h-10 mt-5 mb-2 flex-1 rounded-xl bg-indigo-500 text-white flex items-center justify-center">{children}</div>
 }
 
 export default function Template({ children }) {
@@ -26,7 +26,7 @@ export default function Template({ children }) {
   return (
     <div>
       <Suspense fallback={<Loading />}>
-        <CustomComponent />
+        <CustomComponent>{children}</CustomComponent>
       </Suspense>
       <label htmlFor="text" className="block text-sm font-medium leading-6 text-gray-900">
         在这里随意输入一些内容：

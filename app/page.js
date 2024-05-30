@@ -1,8 +1,12 @@
-import Image from "next/image";
-
+import Link from 'next/link';
 export default function Home() {
   const res = '122'
   return (
-    <div>我是首页</div>
+    <div>
+      <h2>我是首页</h2>
+      <Link href="/testRouter?name=John&age=30">
+        Go to testRouter Page
+      </Link>
+    </div>
   );
 }
