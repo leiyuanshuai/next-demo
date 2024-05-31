@@ -4,14 +4,14 @@ import { cookies, headers } from 'next/headers'
 import { NextResponse, NextRequest } from 'next/server'
 import {redirect} from 'next/navigation'
 // 处理cookie
-// export async function GET(request) {
-//   const cookieStore = cookies()
-//   const token = cookieStore.get('token')
-//   return new NextResponse('Hello, Next.js!', {
-//     status: 200,
-//     headers: { 'Set-Cookie': `token=${token.value}` },
-//   })
-// }
+export async function GET(request) {
+  const cookieStore = cookies()
+  const token = cookieStore.get('token')
+  return new NextResponse('Hello, Next.js!', {
+    status: 200,
+    headers: { 'Set-Cookie': `token=${token.value}` },
+  })
+}
 
 // 处理返回新的header
 // export async function GET(req) {
@@ -40,12 +40,12 @@ import {redirect} from 'next/navigation'
 //   return NextResponse.json({ ...body, message: '解析post json形式的请求体' })
 // }
 // 解析json格式的post请求
-// export async function POST(request) {
-//   const body = await request.json()
-//   // console.log(body)
-//   console.log(request)
-//   return NextResponse.json({ ...body, message: '解析post json形式的请求体' })
-// }
+export async function POST(request) {
+  const body = await request.json()
+  // console.log(body)
+  console.log(request)
+  return NextResponse.json({ ...body, message: '解析post json形式的请求体' })
+}
 
 // 解析form-data格式的post请求
 // export async function POST(request) {
