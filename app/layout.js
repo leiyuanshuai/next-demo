@@ -10,8 +10,9 @@ export default function RootLayout({ children, team, analytics  }) {
     <html lang="en">
       <body>
         {children}
-        {team}
-        {analytics}
+        {/* 下面这2个会影响SSG渲染 */}
+        {/* {team}
+        {analytics} */}
         </body>
     </html>
   );

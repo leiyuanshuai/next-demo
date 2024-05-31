@@ -7,6 +7,10 @@ export default function Home() {
       <Link href="/testRouter?name=John&age=30">
         Go to testRouter Page
       </Link>
+      <br />
+      <Link href="/testSSG/1">
+        Go to testSSG Page
+      </Link>
     </div>
   );
 }

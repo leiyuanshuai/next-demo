@@ -10,7 +10,8 @@
     "profile": "next build --profile",
     "info": "next info",
     "debug": "next build --debug",
-    "lint": "next lint --fix"
+    "lint": "next lint --fix",
+    "serve": "npx serve@latest out"
   },
   "dependencies": {
     "antd-mobile": "^5.36.1",

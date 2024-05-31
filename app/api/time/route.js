@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server'
-export const dynamic = 'force-dynamic' // 强制声明为动态渲染
+// export const dynamic = 'force-dynamic' // 强制声明为动态渲染
 
 export async function GET(req) {
   // const res = await fetch('https://jsonplaceholder.typicode.com/posts')
