@@ -3,7 +3,7 @@
 "use client"; // 声明为客户端组件
 
 import { useSearchParams } from 'next/navigation';
-import { Suspense } from 'react';
+import { Suspense, useState , useEffect} from 'react';
 
 const TestRouterComponent = () => {
   const searchParams = useSearchParams();
