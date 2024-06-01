@@ -57,3 +57,7 @@ build完成之后，需要执行npx serve@latest out
 #### 客户端组件报错的各种问题解决办法
 > https://juejin.cn/post/7352342892785352755
 
+#### 常用api测试
+https://jsonplaceholder.typicode.com/guide/
+
+####  如何在vscode写next.js有提示代码 "@types/next": "^9.0.0",

@@ -27,10 +27,15 @@ export default function Home() {
     href: '/testLoading',
     className: 'item'
   },
+  {
+    text: '去测试客户端可能存在的各种错误',
+    href: '/testClientError',
+    className: 'item'
+  },
 ]
   return (
     <div>
-      <h2>我是首页</h2>
+      <h2>我是首页22</h2>
       <div className='box'>
       {arr.map(item => {
         return  <Link href={item.href} key={item.href} className={item.className}>
