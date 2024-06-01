@@ -36,6 +36,11 @@ export default function Home() {
       href: '/testClient',
       className: 'item',
     },
+    {
+      text: '去测试服务端渲染的三种策略',
+      href: '/testServer',
+      className: 'item',
+    }
   ];
   return (
     <div>

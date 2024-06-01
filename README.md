@@ -61,3 +61,63 @@ build完成之后，需要执行npx serve@latest out
 https://jsonplaceholder.typicode.com/guide/
 
 ####  如何在vscode写next.js有提示代码 "@types/next": "^9.0.0",
+
+#### Next.js 存在三种不同的服务端渲染策略：
+静态渲染
+```
+这是默认渲染策略，路由在构建时渲染，或者在重新验证后后台渲染，其结果会被缓存并且可以推送到 CDN。
+适用于未针对用户个性化且数据已知的情况，比如静态博客文章、产品介绍页面等。
+静态渲染可能导致页面或者数据不更新的问题 (export const revalidate = 10 可暂时解决缓存的问题)
+
+```
+动态渲染
+```
+适用场景:路由在请求时渲染，适用于针对用户个性化或依赖请求中的信息（如 cookie、URL 参数）的情况。
+什么情况下next.js会把页面当做动态渲染呢，其出现以下几种情况中的一个: next.js会默认采用动态渲染
+cookies() 和 headers() ：获取 cookie 和 header
+searchParams：页面查询参数
+注意: 页面转化为动态渲染，并不代表接口请求一定会被缓存
+```
+
+
+Streaming
+
+#### 服务器页面组件
+```
+export default async function Page({params, searchParams,context}) {}
+```
+#### 下面是让动态渲染生效的几种方式
+
+
+```javascript
+
+import {headers, cookies} from 'next/headers'
+export default async function Page() {
+
+  // 第一种情况会形成动态路由+清除fetch缓存
+  // const data = await fetch('https://api.thecatapi.com/v1/images/search', {
+  //   cache: 'no-store' // 会形成动态路由
+  // }).then(res => res.json())
+
+  // 第二种情况会形成动态路由+清除fetch缓存
+  //   const data = await fetch('https://api.thecatapi.com/v1/images/search', {
+  //     next: { revalidate: 0 } // 会形成动态路由
+  // }).then(res => res.json())
+
+ // 第三种情况会形成动态路由+清除fetch缓存  在headers 或 cookies 或 searchParams 方法之后使用 fetch请求
+  // const headersList = headers();
+  // const data = await fetch('https://api.thecatapi.com/v1/images/search').then(res => res.json())
+  // const item = data[0]
+
+  // 第四种情况会形成动态路由+fetch缓存还是存在 在页面的顶部添加 export const dynamic = 'force-dynamic'; 配置路由段选项
+  const data = await fetch('https://api.thecatapi.com/v1/images/search').then(res => res.json())
+  const item = data[0]
+  return (
+    <>
+    <img src={item.url} width="300" alt="cat" height={item.height}/>
+    <button>button5</button>
+    </>
+  )
+}
+
+```
