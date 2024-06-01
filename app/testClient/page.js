@@ -1,15 +1,11 @@
 'use client'
 
-import { useState } from 'react';
-
-console.log('client')
+import { useState, useContext } from 'react';
+import {ThemeContext} from '../context/ThemeProvider';
 
 export default function Page() {
-
-  console.log('client Page')
-
-  const [text, setText] = useState('init text');
-
+ const [text, setText] = useState('init text');
+ const value = useContext(ThemeContext)
   return (
     <button onClick={() => {
       setText('change text')
