@@ -121,3 +121,34 @@ export default async function Page() {
 }
 
 ```
+#### 在next.js中清除fetch数据缓存 的几种方式
+> 注：在一个静态渲染的路由中，如果你有多个请求，
+每个请求设置了不同的重新验证时间，
+将会使用最短的时间用于所有的请求。而对于动态渲染的路由，每一个 fetch请求都将独立重新验证。
+- 基于时间的重新验证
+```javascript
+// 单位是秒
+fetch('https://...', { next: { revalidate: 3600 } })
+fetch(`https://...`, { cache: 'no-store' })
+
+
+```
+- 通过路由段配置项进行配置
+
+```javascript
+// layout.jsx | page.jsx | route.js
+export const revalidate = 3600 
+
+```
+- revalidatePath和revalidateTag
+#### fetch退出缓存的方式
+
+```
+fetch 请求添加了 cache: 'no-store' 选项
+fetch 请求添加了 revalidate: 0 选项
+fetch 请求在路由处理程序中并使用了 POST 方法
+使用headers 或 cookies 的方法之后使用 fetch请求
+<!--配置了路由段选项 const dynamic = 'force-dynamic'-->
+配置了路由段选项 fetchCache ，默认会跳过缓存
+fetch 请求使用了 Authorization或者 Cookie请求头，并且在组件树中其上方还有一个未缓存的请求
+```
