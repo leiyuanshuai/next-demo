@@ -51,3 +51,21 @@
 .swiper-slide {
   background-color: aqua;
 }
+.form {
+  border: 2px salmon solid;
+}
+.inp {
+  display: flex;
+  border: 2px seagreen solid;
+}
+.btn {
+  cursor: pointer;
+  color: azure;
+  padding: 4px 10px;
+  border-radius: 4px;
+  font-size: 16px;
+  background-color: blueviolet;
+}
+.msg {
+  color: salmon;
+}

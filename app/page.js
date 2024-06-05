@@ -55,6 +55,26 @@ export default function Home() {
       text: '解决路由缓存方式二',
       href: '/testRouterCache2',
       className: 'item',
+    },
+    {
+      text: '测试Server Action',
+      href: '/form',
+      className: 'item',
+    },
+    {
+      text: '测试Server Action2',
+      href: '/form2',
+      className: 'item',
+    },
+    {
+      text: '测试revalidateTag',
+      href: '/testRevalidateTag',
+      className: 'item',
+    },
+    {
+      text: '测试next/dynamic',
+      href: '/testDynamic',
+      className: 'item',
     }
   ];
   return (
